@@ -5,9 +5,9 @@ pipeline {
             args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
-    environment {
+    /*environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-    }
+    }*/
     stages {
      /* stage ('Testing Stage') {
         steps {
