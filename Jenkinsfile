@@ -11,6 +11,13 @@ pipeline {
           }
         }
       }*/
+      stage('Verificar Docker') {
+            steps {
+                script {
+                    sh 'which docker'
+                }
+            }
+        }
       stage('Build') {
         steps {
           sh 'docker build -t gereoz/jenkins-docker-hub .'
