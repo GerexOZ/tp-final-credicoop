@@ -13,9 +13,7 @@ pipeline {
       }*/
       stage('Build') {
         steps {
-          script{
-              sh 'docker build --no-cache -t gereoz/jenkinsimage .'
-          }
+          def app = docker.build("gereoz/jenkinsimage")
         }
       }
      /* stage('Login') {
