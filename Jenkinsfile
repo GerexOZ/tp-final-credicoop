@@ -19,7 +19,7 @@ pipeline {
       stage('Build') {
         steps {
           script {
-            sh 'docker build -t gereoz/jenkins-docker-hub .'
+            sh '/usr/bin/docker build -t gereoz/jenkins-docker-hub .'
            }
         }
       }
