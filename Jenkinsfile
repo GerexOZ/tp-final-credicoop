@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image ''
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
     /*environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }*/
@@ -19,7 +14,7 @@ pipeline {
       stage('Build') {
         steps {
           script {
-            sh '/usr/bin/docker build -t gereoz/jenkins-docker-hub .'
+            sh 'docker build -t gereoz/jenkins-docker-hub .'
            }
         }
       }
