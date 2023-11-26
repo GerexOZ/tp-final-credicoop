@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    /*environment {
+    environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-    }*/
+    }
     stages {
      /* stage ('Testing Stage') {
         steps {
@@ -11,16 +11,11 @@ pipeline {
           }
         }
       }*/
-      stage('Verificar Docker') {
-            steps {
-                sh 'which docker'
-            }
-        }
-      /*stage('Build') {
+      stage('Build') {
         steps {
           sh 'docker build -t gereoz/jenkins-docker-hub .'
         }
-      }*/
+      }
      /* stage('Login') {
         steps {
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
