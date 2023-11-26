@@ -13,7 +13,7 @@ pipeline {
       }*/
       stage('Build') {
         steps {
-          def app = docker.build("getintodevops/hellonode")
+          docker build --no-cache -t gereoz/jenkinsimage .
         }
       }
      /* stage('Login') {
