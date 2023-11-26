@@ -13,7 +13,9 @@ pipeline {
       }*/
       stage('Build') {
         steps {
-          docker build --no-cache -t gereoz/jenkinsimage .
+          script{
+              sh 'docker build --no-cache -t gereoz/jenkinsimage .'
+          }
         }
       }
      /* stage('Login') {
