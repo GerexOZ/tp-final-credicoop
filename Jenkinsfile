@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent{
+        dockerfile true
+    }
     stages {
       stage ('Testing Stage') {
         steps {
@@ -8,5 +10,19 @@ pipeline {
           }
         }
       }
+      stage ('Build Docker Image and Push it') {
+          steps {
+            def customImage = docker.build("gereoz/libros", ./DockerfileRender)
+            customImage.push()
+          }
+      }    
     }
 }
+
+
+/*
+  echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            docker build -t ${DOCKERHUB_USERNAME}/$IMAGE_NAME:latest .
+            docker push ${DOCKERHUB_USERNAME}/$IMAGE_NAME:latest
+
+*/
