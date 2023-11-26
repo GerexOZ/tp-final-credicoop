@@ -1,9 +1,7 @@
 pipeline {
     agent any
     environment {
-      registry = "gereoz/tpcredicoop"
-      registryCredential = 'dockerhub_id'
-      dockerImage = 'DockerfileRender'
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages {
       stage ('Testing Stage') {
@@ -13,9 +11,19 @@ pipeline {
           }
         }
       }
-      stage ('Build and Push Dockerfile') {
-        steps {  
-          sh "docker build -t gereoz/libros ."  
+      stage('Build') {
+        steps {
+          sh 'docker build -t lloydmatereke/jenkins-docker-hub .'
+        }
+      }
+      stage('Login') {
+        steps {
+          sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        }
+      }
+      stage('Push') {
+        steps {
+          sh 'docker push lloydmatereke/jenkins-docker-hub'
         }
       }
     }
