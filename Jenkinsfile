@@ -13,9 +13,7 @@ pipeline {
       }*/
       stage('Build') {
         steps {
-          script {
-            sh 'docker build -t gereoz/jenkins-docker-hub .'
-           }
+          def app = docker.build("getintodevops/hellonode")
         }
       }
      /* stage('Login') {
