@@ -8,12 +8,16 @@ pipeline {
           }
         }
       }
-      stage ('Build Docker Image and Push it') {
-          steps {
-            def customImage = docker.build("gereoz/libros", "./DockerfileRender")
-            customImage.push()
-          }
-      }    
+      stage('Build image') {
+            steps {
+                echo 'Starting to build docker image'
+
+                script {
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+                    customImage.push()
+                }
+            }
+        }
     }
 }
 
