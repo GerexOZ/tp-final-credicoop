@@ -13,10 +13,7 @@ pipeline {
       }*/
       stage('Verificar Docker') {
             steps {
-                script {
-                    def dockerPath = sh(script: 'which docker', returnStdout: true).trim()
-                    echo "La ruta de Docker es: ${dockerPath}"
-                }
+                sh 'which docker'
             }
         }
       /*stage('Build') {
