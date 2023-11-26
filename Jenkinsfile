@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    environment {
+      registry = "gereoz/tpcredicoop"
+      registryCredential = 'gereoz'
+      dockerImage = 'DockerfileRender'
+    }
     stages {
       stage ('Testing Stage') {
         steps {
@@ -8,16 +13,22 @@ pipeline {
           }
         }
       }
-      stage('Build image') {
-            steps {
-                echo 'Starting to build docker image'
-
-                script {
-                    def customImage = docker.build("gereoz/credicoop", "./DockerfileRender")
-                    customImage.push()
-                }
-            }
+      stage('Building our image') {
+        steps{
+          script {
+            dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          }
         }
+      }
+      stage('Deploy our image') {
+        steps{
+          script {
+            docker.withRegistry('', registryCredential) {
+              dockerImage.push()
+            }
+          }
+        }
+      }
     }
 }
 
