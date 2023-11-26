@@ -12,7 +12,7 @@ pipeline {
       }
       stage ('Build Docker Image and Push it') {
           steps {
-            def customImage = docker.build("gereoz/libros", ./DockerfileRender)
+            def customImage = docker.build("gereoz/libros", "./DockerfileRender")
             customImage.push()
           }
       }    
