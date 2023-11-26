@@ -13,7 +13,7 @@ pipeline {
       }*/
       stage('Build') {
         steps {
-          def app = docker.build("gereoz/jenkinsimage")
+          def app = docker.build("getintodevops/hellonode")
         }
       }
      /* stage('Login') {
