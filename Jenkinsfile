@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
       registry = "gereoz/tpcredicoop"
-      registryCredential = 'gereoz'
+      registryCredential = 'dockerhub_id'
       dockerImage = 'DockerfileRender'
     }
     stages {
