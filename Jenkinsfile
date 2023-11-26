@@ -3,29 +3,29 @@ pipeline {
     environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
-    stages {
+    /*stages {
       stage ('Testing Stage') {
         steps {
           withMaven(maven : 'apache-maven-3.9.5') {
             sh 'mvn test'
           }
         }
-      }
-      stage('Build') {
+      }*/
+      /*stage('Build') {
         steps {
           sh 'docker build -t gereoz/jenkins-docker-hub .'
         }
-      }
+      }*/
       stage('Login') {
         steps {
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         }
       }
-      stage('Push') {
+      /*stage('Push') {
         steps {
           sh 'docker push gereoz/jenkins-docker-hub'
         }
-      }
+      }*/
     }
 }
 
