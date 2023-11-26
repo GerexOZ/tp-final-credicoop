@@ -14,7 +14,8 @@ pipeline {
       stage('Verificar Docker') {
             steps {
                 script {
-                    sh 'which docker'
+                    def dockerPath = sh(script: 'which docker', returnStdout: true).trim()
+                    echo "La ruta de Docker es: ${dockerPath}"
                 }
             }
         }
