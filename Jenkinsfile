@@ -13,7 +13,7 @@ pipeline {
       }*/
       stage('Build') {
         steps {
-          sh 'docker build -t gereoz/jenkins-docker-hub .'
+          sh 'docker build -t gereoz/jenkinsdockerhub .'
         }
       }
      /* stage('Login') {
