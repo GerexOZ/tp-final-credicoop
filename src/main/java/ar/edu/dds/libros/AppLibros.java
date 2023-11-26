@@ -14,7 +14,13 @@ import java.net.URISyntaxException;
 
 public class AppLibros {
 
-	public static EntityManagerFactory entityManagerFactory;string + ": " + env.get(string));
+	public static EntityManagerFactory entityManagerFactory;
+
+	public static void main(String[] args) throws Exception {
+		
+		Map<String, String> env = System.getenv();
+		for (String string : env.keySet()) {
+			System.out.println(string + ": " + env.get(string));
 		}
 		
 		entityManagerFactory =  createEntityManagerFactory();
