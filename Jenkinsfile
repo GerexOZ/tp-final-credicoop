@@ -19,7 +19,9 @@ pipeline {
       stage('Build') {
         steps {
           script {
-            sh 'docker build -t gereoz/jenkins-docker-hub .'
+            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        docker.build('gereoz/jenkins-docker-hub')
+                    }
            }
         }
       }
