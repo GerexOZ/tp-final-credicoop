@@ -4,14 +4,14 @@ pipeline {
       stage ('Compile Stage') {
 
         steps {
-          withMaven(maven : 'apache-maven-1.4.1') {
+          withMaven(maven : 'apache-maven-3.9.5') {
             bat'mvn clean compile'
           }
         }
       }
       stage ('Testing Stage') {
         steps {
-          withMaven(maven : 'apache-maven-1.4.1') {
+          withMaven(maven : 'apache-maven-3.9.5') {
             bat'mvn test'
           }
         }
