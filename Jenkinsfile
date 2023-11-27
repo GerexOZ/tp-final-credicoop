@@ -13,14 +13,14 @@ pipeline {
         }
       }
      stage('SonarQube Analysis') {
-       steps {
+        steps {
          def mvn = tool 'apache-maven-3.9.5';
          withSonarQubeEnv('sonarqube') {
            sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=TPFinalCredicoop -Dsonar.projectName='TPFinalCredicoop'"
          }
        }  
      }
-      stage('Build Docker Image') {
+     stage('Build Docker Image') {
         steps {
           script{
               sh '/usr/bin/docker build -t gereoz/jenkins-docker-hub .'
@@ -32,7 +32,7 @@ pipeline {
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         }
       }
-      stage('Push') {
+     stage('Push') {
         steps {
           sh 'docker push gereoz/jenkins-docker-hub'
         }
