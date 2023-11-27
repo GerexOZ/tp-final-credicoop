@@ -13,9 +13,12 @@ pipeline {
         }
       }
      stage('SonarQube Analysis') {
-       withSonarQubeEnv('sonarqube') {
-         sh 'mvn sonar:sonar'
-       }
+       steps {
+         def mvn = tool 'apache-maven-3.9.5';
+         withSonarQubeEnv() {
+           sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=TPFinalCredicoop -Dsonar.projectName='TPFinalCredicoop'"
+         }
+       }  
      }
       stage('Build Docker Image') {
         steps {
