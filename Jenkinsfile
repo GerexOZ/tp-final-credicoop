@@ -4,6 +4,12 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages {
+      stage('SonarQube Analysis') {
+        def mvn = tool 'apache-maven-3.9.5';
+        withSonarQubeEnv() {
+          sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=tpFinalCredicoop -Dsonar.projectName='tpFinalCredicoop'"
+        }
+      }
      stage ('Testing Stage') {
         steps {
           withMaven(maven : 'apache-maven-3.9.5') {
