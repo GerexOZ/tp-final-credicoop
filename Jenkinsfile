@@ -13,7 +13,6 @@ pipeline {
         }
       }
      stage('SonarQube Analysis') {
-       def mvn = tool 'apache-maven-3.9.5';
        withSonarQubeEnv('sonarqube') {
          sh 'mvn sonar:sonar'
        }
