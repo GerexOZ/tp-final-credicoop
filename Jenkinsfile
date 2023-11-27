@@ -14,7 +14,9 @@ pipeline {
      stage('SonarQube Analysis') {
         steps {
           withSonarQubeEnv('sonarqube') {
-           sh "mvn sonar:sonar"
+            withMaven(maven : 'apache-maven-3.9.5') {
+              sh "mvn sonar:sonar"
+            }
           }
         }  
      }
