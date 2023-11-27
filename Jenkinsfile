@@ -41,7 +41,7 @@ pipeline {
 
 
 /*
-  echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+  echo "$DOCERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             docker build -t ${DOCKERHUB_USERNAME}/$IMAGE_NAME:latest .
             docker push ${DOCKERHUB_USERNAME}/$IMAGE_NAME:latest
 
