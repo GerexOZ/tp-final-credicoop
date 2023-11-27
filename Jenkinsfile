@@ -11,14 +11,18 @@ pipeline {
           }
         }
       }
-     stage('SonarQube Analysis') {
+      stage('SonarQube Analysis') {
+        tools {
+          jdk "java17" // the name you have given the JDK installation using the JDK manager (Global Tool Configuration)
+        }
+        environment {
+          scannerHome = tool 'SonarQube Scanner' // the name you have given the Sonar Scanner (Global Tool Configuration)
+        }
         steps {
-          withSonarQubeEnv('sonarqube') {
-            withMaven(maven : 'apache-maven-3.9.5') {
-              sh "mvn clean verify sonar:sonar -Dsonar.projectKey=TPFinalCredicoop -Dsonar.projectName='TPFinalCredicoop'"
-            }
+          withSonarQubeEnv(installationName: 'sonarqube') {
+            sh 'mvn sonar:sonar'
           }
-        }  
+        }
      }
      stage('Build Docker Image') {
         steps {
