@@ -15,7 +15,7 @@ pipeline {
         steps {
           withSonarQubeEnv('sonarqube') {
             withMaven(maven : 'apache-maven-3.9.5') {
-              sh "mvn sonar:sonar"
+              sh "mvn clean verify sonar:sonar -Dsonar.projectKey=TPFinalCredicoop -Dsonar.projectName='TPFinalCredicoop'"
             }
           }
         }  
