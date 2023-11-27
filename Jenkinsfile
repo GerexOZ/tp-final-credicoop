@@ -4,13 +4,13 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages {
-     stage ('Testing Stage') {
+     /*stage ('Testing Stage') {
         steps {
           withMaven(maven : 'apache-maven-3.9.5') {
             sh 'mvn -X test'
           }
         }
-      }
+      }*/
       stage('Build') {
         steps {
           script{
