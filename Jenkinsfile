@@ -1,16 +1,16 @@
 pipeline {
     agent any
-    /*environment {
+    environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-    }*/
+    }
     stages {
-     /* stage ('Testing Stage') {
+     stage ('Testing Stage') {
         steps {
           withMaven(maven : 'apache-maven-3.9.5') {
             sh 'mvn test'
           }
         }
-      }*/
+      }
       stage('Build') {
         steps {
           script{
@@ -18,16 +18,16 @@ pipeline {
           }
         }
       }
-     /* stage('Login') {
+     stage('Login') {
         steps {
           sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
         }
       }
-      /*stage('Push') {
+      stage('Push') {
         steps {
           sh 'docker push gereoz/jenkins-docker-hub'
         }
-      }*/
+      }
     }
 }
 
