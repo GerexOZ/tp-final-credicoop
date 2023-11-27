@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+    def mvn = tool 'apache-maven-3.9.5';
     }
     stages {
      stage ('Testing Stage') {
@@ -12,7 +13,6 @@ pipeline {
         }
       }
      stage('SonarQube Analysis') {
-       def mvn = tool 'apache-maven-3.9.5';
        steps {
          withSonarQubeEnv('sonarqube') {
          sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=TPFinalCredicoop -Dsonar.projectName='TPFinalCredicoop'"
