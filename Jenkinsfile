@@ -11,18 +11,18 @@ pipeline {
           }
         }
       }
-      stage('SonarQube Analysis') {
-        tools {
-          jdk "java17" // the name you have given the JDK installation using the JDK manager (Global Tool Configuration)
-        }
-        environment {
-          scannerHome = tool 'SonarQube Scanner' // the name you have given the Sonar Scanner (Global Tool Configuration)
-        }
-        steps {
-          withSonarQubeEnv(installationName: 'sonarqube') {
-            sh 'mvn sonar:sonar'
-          }
-        }
+     stage('SonarQube Analysis') {
+       tools {
+         jdk "java17" // the name you have given the JDK installation using the JDK manager (Global Tool Configuration)
+       }
+       environment {
+         scannerHome = tool 'scanner' // the name you have given the Sonar Scanner (Global Tool Configuration)
+       }
+       steps {
+         withSonarQubeEnv(installationName: 'sonarqube') {
+           sh 'mvn sonar:sonar'
+         }
+       }
      }
      stage('Build Docker Image') {
         steps {
