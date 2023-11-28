@@ -3,7 +3,7 @@ pipeline {
     environment {
       DOCKERHUB_CREDENTIALS = credentials('dockerhub')
       mvn = tool 'apache-maven-3.8.6';
-      remote = [:]
+      remote = [:];
       remote.name = "VM2-Produccion"
       remote.host = "172.174.206.242"
       remote.allowAnyHosts = true
