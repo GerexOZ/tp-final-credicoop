@@ -46,7 +46,7 @@ pipeline {
      }
      stage('test'){
        steps {
-         sh 'echo '  
+         sh 'pwd'  
        }
      }
   }
