@@ -22,7 +22,7 @@ pipeline {
      stage('Build Docker Image') {
         steps {
           script{
-              sh 'docker build -t gereoz/jenkins-docker-hub .'
+              sh '/usr/bin/docker build -t gereoz/jenkins-docker-hub .'
           }
         }
       }
@@ -36,13 +36,5 @@ pipeline {
           sh 'docker push gereoz/jenkins-docker-hub'
         }
       }
-  }
+    }
 }
-
-
-/*
-  echo "$DOCERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker build -t ${DOCKERHUB_USERNAME}/$IMAGE_NAME:latest .
-            docker push ${DOCKERHUB_USERNAME}/$IMAGE_NAME:latest
-final
-*/
