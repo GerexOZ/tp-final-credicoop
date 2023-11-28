@@ -39,11 +39,6 @@ pipeline {
          sh 'docker image rm gereoz/jenkins-docker-hub'
        }
      }*/
-     stage('Verify VM1-Infraestructura with VM2-Produccion'){
-       steps {
-         sh 'ping 172.174.206.242'
-       }
-     }
      stage('test'){
        steps {
          sh 'ssh -l devops 172.174.206.242 pwd'  
