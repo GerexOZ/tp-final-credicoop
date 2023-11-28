@@ -5,7 +5,7 @@ pipeline {
       mvn = tool 'apache-maven-3.8.6';
     }
     stages {
-     stage ('Testing Stage') {
+    /* stage ('Testing Stage') {
         steps {
           withMaven(maven : 'apache-maven-3.8.6') {
             sh 'mvn -X test'
@@ -38,15 +38,15 @@ pipeline {
        steps {
          sh 'docker image rm gereoz/jenkins-docker-hub'
        }
-     }
-     stage('Connect VM1-Infraestructura with VM2-Produccion'){
+     }*/
+     stage('Verify VM1-Infraestructura with VM2-Produccion'){
        steps {
-         sh 'ssh devops@172.174.206.242'
+         sh 'ping 172.174.206.242'
        }
      }
      stage('test'){
        steps {
-         sh 'pwd'  
+         sh 'ssh -l devops 172.174.206.242 pwd'  
        }
      }
   }
