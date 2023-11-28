@@ -41,6 +41,7 @@ pipeline {
          sh 'cd kompose'
          sh 'echo pwd'
     }
+  }
 }
 
 
