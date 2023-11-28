@@ -37,9 +37,11 @@ pipeline {
         }
       }
      stage('Conectar con la VM de produccion mediante SSH'){
-         sh 'ssh devops@172.174.206.242'
-         sh 'cd kompose'
-         sh 'echo pwd'
+        steps {
+          sh 'ssh devops@172.174.206.242'
+          sh 'cd kompose'
+          sh 'echo pwd'
+         }
     }
   }
 }
