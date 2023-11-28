@@ -22,7 +22,7 @@ pipeline {
      stage('Build Docker Image') {
         steps {
           script{
-              sh '/usr/bin/docker build -t gereoz/jenkins-docker-hub .'
+              sh 'docker build -t gereoz/jenkins-docker-hub .'
           }
         }
       }
@@ -41,7 +41,7 @@ pipeline {
           sh 'ssh devops@172.174.206.242'
           sh 'cd kompose'
           sh 'echo pwd'
-         }
+        }
     }
   }
 }
