@@ -42,19 +42,18 @@ pipeline {
      stage('test'){
         steps {
             script {
-              withCredentials ([sshUserPrivateKey(credentialsId: 'jenkins', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'devops')]) {
                 def remote = [:]
                 remote.name = "VM2-Produccion"
                 remote.host = "172.174.206.242"
                 remote.allowAnyHosts = true
                 remote.user = 'devops'
+                remote.password = 'InfraCredicoop_'
                 remote.identityFile = identity
     
                
                 sshCommand remote:remote, command: "ls -l"
                 sshCommand remote:remote, command: 'ls -l'
                 sshCommand remote:remote, command: 'pwd'
-              }
             }
          }
      }
