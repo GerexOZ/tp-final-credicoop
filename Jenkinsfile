@@ -40,9 +40,23 @@ pipeline {
        }
      }*/
      stage('test'){
-       steps {
-         sh 'echo $USER'  
-       }
+        steps {
+            script {
+              withCredentials ([sshUserPrivateKey(credentialsId: 'devops', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'devops')]) {
+                def remote = [:]
+                remote.name = "VM2-Produccion"
+                remote.host = "172.174.206.242"
+                remote.allowAnyHosts = true
+                remote.user = 'devops'
+                remote.identityFile = identity
+    
+               
+                sshCommand remote:remote, command: "ls -l"
+                sshCommand remote:remote, command: 'ls -l'
+                sshCommand remote:remote, command: 'pwd'
+              }
+            }
+         }
      }
   }
 }
