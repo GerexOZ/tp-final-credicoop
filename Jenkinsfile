@@ -42,7 +42,7 @@ pipeline {
      stage('test'){
         steps {
             script {
-              withCredentials ([sshUserPrivateKey(credentialsId: 'devops', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'devops')]) {
+              withCredentials ([sshUserPrivateKey(credentialsId: 'jenkins', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'devops')]) {
                 def remote = [:]
                 remote.name = "VM2-Produccion"
                 remote.host = "172.174.206.242"
