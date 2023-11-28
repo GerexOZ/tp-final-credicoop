@@ -41,7 +41,8 @@ pipeline {
      }
      stage('test'){
         steps {
-            sh 'ssh devops@172.174.206.242 "minikube restart"'
+            sh 'ssh devops@172.174.206.242 "minikube stop"'
+            sh 'ssh devops@172.174.206.242 "minikube start"'
             sh 'ssh devops@172.174.206.242 "minikube service app"'
          }
      }
