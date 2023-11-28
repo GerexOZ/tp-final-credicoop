@@ -2,12 +2,12 @@ pipeline {
     agent any
     environment {
       DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-      mvn = tool 'apache-maven-3.9.5';
+      mvn = tool 'apache-maven-3.8.6';
     }
     stages {
      stage ('Testing Stage') {
         steps {
-          withMaven(maven : 'apache-maven-3.9.5') {
+          withMaven(maven : 'apache-maven-3.8.6') {
             sh 'mvn -X test'
           }
         }
