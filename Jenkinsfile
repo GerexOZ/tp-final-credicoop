@@ -5,7 +5,7 @@ pipeline {
       mvn = tool 'apache-maven-3.8.6';
     }
     stages {
-    /* stage ('Testing Stage') {
+     stage ('Testing Stage') {
         steps {
           withMaven(maven : 'apache-maven-3.8.6') {
             sh 'mvn -X test'
@@ -38,10 +38,11 @@ pipeline {
        steps {
          sh 'docker image rm gereoz/jenkins-docker-hub'
        }
-     }*/
+     }
      stage('test'){
         steps {
-            sh 'ssh devops@172.174.206.242 "ls"'
+            sh 'ssh devops@172.174.206.242 "minikube restart"'
+            sh 'ssh devops@172.174.206.242 "minikube service app"'
          }
      }
   }
