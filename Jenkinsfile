@@ -21,9 +21,7 @@ pipeline {
      }
      stage('Build Docker Image') {
         steps {
-          script{
               sh '/usr/bin/docker build -t gereoz/jenkins-docker-hub .'
-          }
         }
       }
      stage('Login') {
