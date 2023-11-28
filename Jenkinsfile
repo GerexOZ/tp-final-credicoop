@@ -44,7 +44,7 @@ pipeline {
             sh 'ssh devops@172.174.206.242 "minikube stop"'
             sh 'ssh devops@172.174.206.242 "minikube start"'
             sh 'ssh devops@172.174.206.242 "export PUERTO_A_USAR=$(kubectl get services | grep -oP \'\\d+:(\\d+)\' | cut -d\':\' -f2)"'
-            sh 'ssh devops@172.174.206.242 "kubectl port-forward --address 0.0.0.0 svc/app $PUERTO_A_USAR:80"
+            sh 'ssh devops@172.174.206.242 "kubectl port-forward --address 0.0.0.0 svc/app $PUERTO_A_USAR:8080"'
             sh 'ssh devops@172.174.206.242 "echo $PUERTO_A_USAR"'
          }
      }
