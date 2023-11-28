@@ -41,7 +41,7 @@ pipeline {
      }*/
      stage('test'){
        steps {
-         sh 'ssh -t devops@172.174.206.242 "pwd"'  
+         sh 'ssh devops@172.174.206.242 "pwd"'  
        }
      }
   }
