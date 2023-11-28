@@ -41,7 +41,7 @@ pipeline {
      }*/
      stage('test'){
        steps {
-         sh 'ssh devops@172.174.206.242'  
+         sh 'echo $USER'  
        }
      }
   }
