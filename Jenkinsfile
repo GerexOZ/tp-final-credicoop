@@ -5,7 +5,7 @@ pipeline {
       mvn = tool 'apache-maven-3.8.6';
     }
     stages {
-     stage ('Testing Stage') {
+     /*stage ('Testing Stage') {
         steps {
           withMaven(maven : 'apache-maven-3.8.6') {
             sh 'mvn -X test'
@@ -38,14 +38,14 @@ pipeline {
        steps {
          sh 'docker image rm gereoz/jenkins-docker-hub'
        }
-     }
+     }*/
      stage('test'){
         steps {
             sh 'ssh devops@172.174.206.242 "minikube stop"'
             sh 'ssh devops@172.174.206.242 "minikube start"'
-            sh 'ssh devops@172.174.206.242 "export PUERTO_A_USAR=$(kubectl get services | grep -oP "\d+:(\d+)" | cut -d":" -f2)"'
+            sh 'ssh devops@172.174.206.242 "export PUERTO_A_USAR=$(kubectl get services | grep -oP '\d+:(\d+)/TCP' | cut -d':' -f2)"'
             sh 'ssh devops@172.174.206.242 "kubectl port-forward --address 0.0.0.0 svc/app $PUERTO_A_USAR:80"
-            sh 'echo $PUERTO_A_USAR'
+            sh 'ssh devops@172.174.206.242 "echo $PUERTO_A_USAR"'
          }
      }
   }
