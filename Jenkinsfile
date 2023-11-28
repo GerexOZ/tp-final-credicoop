@@ -34,5 +34,10 @@ pipeline {
           sh 'docker push gereoz/jenkins-docker-hub'
         }
       }
+     stage('Delete image from VM1-Infraestructura') {
+       steps {
+         sh 'docker image rm gereoz/jenkins-docker-hub'
+       }
+     }
     }
 }
