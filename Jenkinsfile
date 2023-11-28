@@ -43,7 +43,7 @@ pipeline {
         steps {
             sh 'ssh devops@172.174.206.242 "minikube stop"'
             sh 'ssh devops@172.174.206.242 "minikube start"'
-            sh 'ssh devops@172.174.206.242 "kubectl get services | grep -oP '\d+:(\d+)' | cut -d':' -f2"'
+            sh 'ssh devops@172.174.206.242 "kubectl get services | grep -oP "\d+:(\d+)" | cut -d":" -f2"'
          }
      }
   }
