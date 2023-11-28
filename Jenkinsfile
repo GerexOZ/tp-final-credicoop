@@ -41,7 +41,7 @@ pipeline {
      }
      stage('Connect VM1-Infraestructura with VM2-Produccion'){
        steps {
-         sh 'ssh devops@20.121.47.57'
+         sh 'ssh devops@172.174.206.242'
        }
      }
      stage('test'){
