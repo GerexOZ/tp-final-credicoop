@@ -39,5 +39,15 @@ pipeline {
          sh 'docker image rm gereoz/jenkins-docker-hub'
        }
      }
-    }
+     stage('Connect VM1-Infraestructura with VM2-Produccion'){
+       step {
+         sh 'ssh devops@20.121.47.57'
+       }
+     }
+     stage('test'){
+       step {
+         sh 'echo '  
+       }
+     }
+  }
 }
