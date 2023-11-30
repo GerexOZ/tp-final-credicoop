@@ -44,9 +44,6 @@ pipeline {
             sh 'ssh devops@172.174.206.242 "minikube stop"'
             sh 'ssh devops@172.174.206.242 "minikube start"'
             sh 'ssh devops@172.174.206.242 "minikube service app" || true'
-            
-            sh 'ssh devops@172.174.206.242 "export PUERTO_A_USAR=$(kubectl get services | grep -oP \'\\d+:(\\d+)\' | cut -d\':\' -f2)"'
-            sh 'ssh devops@172.174.206.242 "sudo iptables -t nat -A POSTROUTING -p tcp -d 192.168.49.1  --dport $PUERTO_A_USAR -j SNAT --to-source http://172.174.206.242/"'
          }
      }
   }
