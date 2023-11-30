@@ -39,7 +39,7 @@ pipeline {
          sh 'docker image rm gereoz/jenkins-docker-hub'
        }
      }
-     stage('Deploy the app in VM2-Produccion and expose the port'){
+     stage('Deploy the app in VM2-Produccion and show the port'){
         steps {
             sh 'ssh devops@172.174.206.242 "minikube stop"'
             sh 'ssh devops@172.174.206.242 "minikube start"'
